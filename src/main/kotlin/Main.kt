@@ -1,82 +1,66 @@
 fun main() {
-    //4.7 Практическая работа
-    var firstNameString = "Sergey"
-    var lastNameString = "Gulevich"
-    var height: Double = 181.5
-    var weight: Float = 85F
-    var isChild = height < 150
+    val sourceString = "F2p)v\"y233{0->c}ttelciFc"
+    val uncryptOneString = sourceString.replaceRange(12..23, "")
+                                       .map { Char -> Char + 1 }.joinToString()
+                                       .replace("5", "s")
+                                       .replace("4", "u")
+                                       .replace(", ", "")
+                                       .map { Char -> Char - 3 }.joinToString()
+                                       .replace("0", "o")
+                                       .replace(", ", "")
+    val uncryptTwoString = sourceString.replaceRange(0..11, "")
+                                       .reversed()
+                                       .map {Char -> Char - 4}.joinToString()
+                                       .replace("_"," " )
+                                       .replace(", ","")
 
-    var info =
-        "My Name is $firstNameString \nMy Surname is $lastNameString \nMy height is $height \nMy weight is $weight \nI`am child ${isChild} "
-    println(info)
+    println(uncryptOneString)
+    println(uncryptTwoString)
 
-/*
-    //4_lesson ПЕРЕМЕННЫЕ
-    //4.2 Типы данных. Числа, операции с числами
-    val number: Int = 10000
-    val floatNumber: Float = 2.0f
-    val longNumber: Long = number.toLong()
-    val a = 5
-    val b = 11
-    println("a+b=${a + b}")
-    println("a-b=${a - b}")
-    println("a*b=${a * b}")
-    println("a/b=${b / a.toDouble()}")
-    println("b%a=${b % a}")
 
-    //4.3 Типы данных. Логический тип
-    var numberForChek = 5
-    var isPositive = numberForChek > 0
-    var isEven = numberForChek % 2 == 0
-    println("Is number positive or even? - ${isPositive || isEven}")
-    numberForChek = 10
-    isPositive = numberForChek > 0
-    isEven = numberForChek % 2 == 0
-    println("Is number positive or even? - ${isPositive || isEven}")
+    /* 5.3_v1 Тип Unit. Функциональный тип. Функции высшего порядка и лямбда-выражения
+    val juniorGrossSalary = 50000
+    val middleGrossSalary = 134000
+    val seniorGrossSalary = 167000
 
-    //4.4 Типы данных. Символы
-    val character: Char = 'A'
-    println(character.toInt())
-    val charC = character + 2
-    println(charC)
+    val juniorNetSalary = juniorGrossSalary * 0.87
+    val juniorBank = juniorNetSalary * 0.3 * 12
+    println("With a salary of $juniorGrossSalary person can accumulate $juniorBank in 1 year")
 
-    //4.5 Типы данных. Строки
-    val escapedString = "Hello\nWorld"
-    println(escapedString)
-    val commonString = """Hello
-        |kotlin
-        |This is a
-        |common string
-    """.trimMargin()
-    println(commonString)
-    val hello = "Kotlin"
-    println(hello + "hello")
-    println(hello.toUpperCase())
-    println(hello)
-    //Длинна строки %str% - %length% символов
-    val longStr = "The longest string you`ve ever seen"
-    //First variant
-    val resulString = "Lenght of " + "\"" + longStr + "\"" + longStr.length + " symbols"
-    println(resulString)
-    //Second variant
-    val resultString2 = "Lenght of $longStr - ${longStr.length} symbols"
-    println(resultString2)
-    // string contains
-    val str = "Hello Kotlin"
-    println(str.contains(other = "H"))
-    println(str.contains(other = "Kotlin"))
-    println(str.contains(other = "world"))
-    // replace
-    println(str.replace(oldValue = "l", newValue = "2"))
-    val replaceFirst = str.replaceFirst(oldValue = "Hello", newValue = "First")
-    println(replaceFirst)
+    val middleNetSalary = middleGrossSalary * 0.87
+    val middleBank = middleNetSalary * 0.3 * 12
+    println("With a salary of $middleGrossSalary person can accumulate $middleBank in 1 year")
 
-    //4.6 Типы данных. Nullable типы. NullSafety
-    var number: Int? = null
-    var nonNullString: String = "Hello Kotlin"
-    var nullableString: String? = "Hello Kotlin 2"
-    println(nullableString?.toUpperCase())
-    if (nullableString != null)
-        println(nullableString.toUpperCase())
+    val seniorNetSalary = seniorGrossSalary * 0.87
+    val seniorBank = seniorNetSalary * 0.3 * 12
+    println("With a salary of $seniorGrossSalary person can accumulate $seniorBank in 1 year")
+     */
+    /* 5.3_v2 Тип Unit. Функциональный тип. Функции высшего порядка и лямбда-выражения
+
+    val juniorGrossSalary = 50000
+    val middleGrossSalary = 134000
+    val seniorGrossSalary = 167000
+
+    calculateSavings(juniorGrossSalary, rate = 0.3, period = 12)
+    calculateSavings(middleGrossSalary, rate = 0.3, period = 12)
+    calculateSavings(seniorGrossSalary, rate = 0.3, period = 12)
+}
+    fun calculateSavings (salary: Int, rate: Double = 0.3, period: Int = 12) : Double {
+    val netSalary = salary * 0.87
+    val bank = netSalary * rate * period
+    println("Salary: $salary, rate${rate * 100}%, period: $period months, $bank in 1 year")
+    return bank
+     */
+   /*5.3_v3 Тип Unit. Функциональный тип. Функции высшего порядка и лямбда-выражения
+    val sum = calculateSavings(salary = 50000, rate = 0.3, period = 12) +
+              calculateSavings(salary = 1340000, rate = 0.3, period = 12) +
+              calculateSavings(salary = 167000, rate = 0.3, period = 12)
+}
+fun calculateSavings (salary: Int, rate: Double = 0.3, period: Int = 12) : Double {
+    val netSalary = salary * 0.87
+    val bank = netSalary * rate * period
+    println("Salary: $salary, rate${rate * 100}%, period: $period months, $bank in 1 year")
+    return bank
+
     */
 }
