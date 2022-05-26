@@ -1,4 +1,5 @@
 fun main() {
+    // 5.5 Практическая работа
     val sourceString = "F2p)v\"y233{0->c}ttelciFc"
     val uncryptOneString = sourceString.replaceRange(12..23, "")
                                        .map { Char -> Char + 1 }.joinToString()
